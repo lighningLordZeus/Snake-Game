@@ -97,14 +97,6 @@ canvas {
   animation: blinkingBackground 3s infinite;
 }
 
-@keyframes blinkingBackground {
-  0%		{ color: #ef0a1a;}
-  25%		{ color: #000000;}
-  50%		{ color: #ef0a1a;}
-  75%		{ color: #000000;}
-  100%	{ color: #ef0a1a;}
-}
-
 .controls {
   position: absolute;
   left: 50%;
@@ -115,4 +107,12 @@ canvas {
 
 .controls img{
   width: 64px;
+}
+
+@keyframes blinkingBackground {
+  0%		{ color: #ef0a1a;}
+  25%		{ color: #000000;}
+  50%		{ color: #ef0a1a;}
+  75%		{ color: #000000;}
+  100%	{ color: #ef0a1a;}
 }
