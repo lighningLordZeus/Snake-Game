@@ -12,6 +12,8 @@ var snakeY = blockSize * 9;
 var velocityX = 1;
 var velocityY = 0;
 
+var currentDirection = "right";
+
 var snakeBody = [];
 
 //food
@@ -34,13 +36,41 @@ window.onload = function () {
   // Additional setup for screens
   showStartScreen();
   document.addEventListener("keydown", onkeydown);
-  setInterval(update, 1000 / 5); //100 milliseconds
+  setInterval(update, 1000 / 10); //100 milliseconds
+  setInterval(eatfood, 0);
 };
+
+function eatfood() {
+  if (snakeX == foodX && snakeY == foodY) {
+    snakeBody.push([foodX, foodY]);
+    placeFood();
+    score++;
+
+    if (score > highScore) {
+      highScore = score;
+    }
+  }
+}
 
 function update() {
   if (gameState === "playing") {
     context.fillStyle = "#cccccc";
     context.fillRect(0, 0, board.width, board.height);
+
+    // Update the snake's velocity based on the current direction
+    if (currentDirection === "up" && velocityY !== 1) {
+      velocityX = 0;
+      velocityY = -1;
+    } else if (currentDirection === "down" && velocityY !== -1) {
+      velocityX = 0;
+      velocityY = 1;
+    } else if (currentDirection === "left" && velocityX !== 1) {
+      velocityX = -1;
+      velocityY = 0;
+    } else if (currentDirection === "right" && velocityX !== -1) {
+      velocityX = 1;
+      velocityY = 0;
+    }
 
     context.fillStyle = "#828282";
     context.fillRect(foodX, foodY, blockSize, blockSize);
@@ -50,16 +80,6 @@ function update() {
     const smallerY = foodY + (blockSize - smallerSize) / 2;
     context.fillStyle = "white";
     context.fillRect(smallerX, smallerY, smallerSize, smallerSize);
-
-    if (snakeX == foodX && snakeY == foodY) {
-      snakeBody.push([foodX, foodY]);
-      placeFood();
-      score++;
-
-      if (score > highScore) {
-        highScore = score;
-      }
-    }
 
     for (let i = snakeBody.length - 1; i > 0; i--) {
       snakeBody[i] = snakeBody[i - 1];
@@ -115,18 +135,19 @@ function onkeydown(e) {
 }
 
 function changeDirection(e) {
-  if ((e.code == "ArrowUp" || e.code == "KeyW") && velocityY != 1) {
-    velocityX = 0;
-    velocityY = -1;
-  } else if ((e.code == "ArrowDown" || e.code == "KeyS") && velocityY != -1) {
-    velocityX = 0;
-    velocityY = 1;
-  } else if ((e.code == "ArrowLeft" || e.code == "KeyA") && velocityX != 1) {
-    velocityX = -1;
-    velocityY = 0;
-  } else if ((e.code == "ArrowRight" || e.code == "KeyD") && velocityX != -1) {
-    velocityX = 1;
-    velocityY = 0;
+  if (gameState !== "playing") {
+    return; // Ignore input if not in the playing state
+  }
+
+  // Handle input and set the current direction
+  if (e.code == "ArrowUp" || e.code == "KeyW") {
+    currentDirection = "up";
+  } else if (e.code == "ArrowDown" || e.code == "KeyS") {
+    currentDirection = "down";
+  } else if (e.code == "ArrowLeft" || e.code == "KeyA") {
+    currentDirection = "left";
+  } else if (e.code == "ArrowRight" || e.code == "KeyD") {
+    currentDirection = "right";
   }
 }
 
