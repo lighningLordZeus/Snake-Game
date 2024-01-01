@@ -6,17 +6,17 @@ var board;
 var context;
 
 //snake
-var snakeX = blockSize * 5;
-var snakeY = blockSize * 5;
+var snakeX = blockSize * 9;
+var snakeY = blockSize * 9;
 
-var velocityX = 0;
+var velocityX = 1;
 var velocityY = 0;
 
 var snakeBody = [];
 
 //food
-var foodX = blockSize * 10;
-var foodY = blockSize * 10;
+foodX = Math.floor(Math.random() * cols) * blockSize;
+foodY = Math.floor(Math.random() * rows) * blockSize;
 
 // Score
 var score = 0;
@@ -30,7 +30,6 @@ window.onload = function () {
   board.height = rows * blockSize;
   board.width = cols * blockSize;
   context = board.getContext("2d"); // used for drawing on the board
-  document.getElementById("highscore").style.visibility='hidden';
 
   // Additional setup for screens
   showStartScreen();
@@ -142,9 +141,9 @@ function resetGame() {
   document.getElementById("highscore").textContent = highScore.toString().padStart(3, '0');
   document.getElementById("highscore").style.visibility='visible'
   gameState = "playing";
-  snakeX = blockSize * 5;
-  snakeY = blockSize * 5;
-  velocityX = 0;
+  snakeX = blockSize * 9;
+  snakeY = blockSize * 9;
+  velocityX = 1;
   velocityY = 0;
   snakeBody = [];
   placeFood();

@@ -82,6 +82,7 @@ canvas {
 
 #highscore {
   color: #652323;
+  visibility: hidden;
 }
 
 .snake-logo {
@@ -90,4 +91,28 @@ canvas {
 
 .startScreen {
   margin: 0;
+}
+
+#gameOverScreen {
+  animation: blinkingBackground 3s infinite;
+}
+
+@keyframes blinkingBackground {
+  0%		{ color: #ef0a1a;}
+  25%		{ color: #000000;}
+  50%		{ color: #ef0a1a;}
+  75%		{ color: #000000;}
+  100%	{ color: #ef0a1a;}
+}
+
+.controls {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 117%;
+  min-width: 500px;
+}
+
+.controls img{
+  width: 64px;
 }
