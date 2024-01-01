@@ -1,48 +1,47 @@
 body {
-    text-align: center;
-    position: relative;
+  text-align: center;
+  position: relative;
 }
 
 .huh {
-    margin-top: 70px;
+  margin-top: 100px;
 }
 
 .canvas {
-    background-color: #979998;
-    z-index: -1;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    height: 460px;
-    width: 460px;
-    transform: translate(-50%, -50%);
-    border-radius: 20px;
+  background-color: #979998;
+  z-index: -1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 460px;
+  width: 460px;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
 }
 
 .canvas2 {
-    background-color: #d2d4d2;
-    z-index: -2;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    height: 480px;
-    width: 480px;
-    transform: translate(-50%, -50%);
-    border-radius: 20px;
+  background-color: #d2d4d2;
+  z-index: -2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 480px;
+  width: 480px;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
 }
 
 .canvas3 {
-    background-color: #6e6e6e;
-    z-index: -4;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    height: 505px;
-    width: 505px;
-    transform: translate(-50%, -50%);
-    border-radius: 20px;
+  background-color: #6e6e6e;
+  z-index: -4;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 505px;
+  width: 505px;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
 }
-
 
 canvas {
   border-radius: 2px;
@@ -57,8 +56,18 @@ canvas {
   text-align: center;
   font-size: 40px;
   font-weight: bold;
-  font-family: 'rainyhearts', Courier, monospace;
+  font-family: "rainyhearts", Courier, monospace;
   position: absolute;
   top: 50%;
   left: 50%;
+}
+
+.score {
+    display: flex;
+    justify-content: space-between;
+    width: 460px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: -3.6em;
 }

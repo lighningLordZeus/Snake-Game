@@ -18,6 +18,10 @@ var snakeBody = [];
 var foodX = blockSize * 10;
 var foodY = blockSize * 10;
 
+// Score
+var score = 0;
+var highScore = 0;
+
 // Initial game state
 let gameState = "start"; // start, playing, gameOver
 
@@ -26,6 +30,7 @@ window.onload = function () {
   board.height = rows * blockSize;
   board.width = cols * blockSize;
   context = board.getContext("2d"); // used for drawing on the board
+  document.getElementById("highscore").style.visibility='hidden';
 
   // Additional setup for screens
   showStartScreen();
@@ -38,14 +43,25 @@ function update() {
     context.fillStyle = "#cccccc";
     context.fillRect(0, 0, board.width, board.height);
 
-    context.fillStyle = "grey";
-    context.fillStyle = "white";
-    context.fillRect(foodX, foodY, blockSize, blockSize);
+     context.fillStyle = "#828282";
+     context.fillRect(foodX, foodY, blockSize, blockSize);
+ 
+     const smallerSize = 10;
+     const smallerX = foodX + (blockSize - smallerSize) / 2;
+     const smallerY = foodY + (blockSize - smallerSize) / 2;
+     context.fillStyle = "white";
+     context.fillRect(smallerX, smallerY, smallerSize, smallerSize);
 
     if (snakeX == foodX && snakeY == foodY) {
       snakeBody.push([foodX, foodY]);
       placeFood();
+      score++;
+
+      if (score > highScore) {
+        highScore = score;
+      }
     }
+
 
     for (let i = snakeBody.length - 1; i > 0; i--) {
       snakeBody[i] = snakeBody[i - 1];
@@ -80,6 +96,8 @@ function update() {
         showGameOverScreen();
       }
     }
+    
+    document.getElementById("score").textContent = "Score: " + score;
   }
 }
 
@@ -121,6 +139,8 @@ function placeFood() {
 
 function resetGame() {
   hideGameOverScreen();
+  document.getElementById("highscore").textContent = "Highscore: " + highScore;
+  document.getElementById("highscore").style.visibility='visible'
   gameState = "playing";
   snakeX = blockSize * 5;
   snakeY = blockSize * 5;
@@ -128,6 +148,7 @@ function resetGame() {
   velocityY = 0;
   snakeBody = [];
   placeFood();
+  score = 0;
 }
 
 function showStartScreen() {
