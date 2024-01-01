@@ -112,7 +112,7 @@ canvas {
 @keyframes blinkingBackground {
   0%		{ color: #ef0a1a;}
   25%		{ color: #000000;}
-  50%		{ color: #ef0a1a;}
+  50%		{ color: #d40916;}
   75%		{ color: #000000;}
   100%	{ color: #ef0a1a;}
 }

@@ -42,14 +42,14 @@ function update() {
     context.fillStyle = "#cccccc";
     context.fillRect(0, 0, board.width, board.height);
 
-     context.fillStyle = "#828282";
-     context.fillRect(foodX, foodY, blockSize, blockSize);
- 
-     const smallerSize = 10;
-     const smallerX = foodX + (blockSize - smallerSize) / 2;
-     const smallerY = foodY + (blockSize - smallerSize) / 2;
-     context.fillStyle = "white";
-     context.fillRect(smallerX, smallerY, smallerSize, smallerSize);
+    context.fillStyle = "#828282";
+    context.fillRect(foodX, foodY, blockSize, blockSize);
+
+    const smallerSize = 10;
+    const smallerX = foodX + (blockSize - smallerSize) / 2;
+    const smallerY = foodY + (blockSize - smallerSize) / 2;
+    context.fillStyle = "white";
+    context.fillRect(smallerX, smallerY, smallerSize, smallerSize);
 
     if (snakeX == foodX && snakeY == foodY) {
       snakeBody.push([foodX, foodY]);
@@ -60,7 +60,6 @@ function update() {
         highScore = score;
       }
     }
-
 
     for (let i = snakeBody.length - 1; i > 0; i--) {
       snakeBody[i] = snakeBody[i - 1];
@@ -95,25 +94,25 @@ function update() {
         showGameOverScreen();
       }
     }
-    
-    document.getElementById("score").textContent = score.toString().padStart(3, '0');
+
+    document.getElementById("score").textContent = score
+      .toString()
+      .padStart(3, "0");
   }
 }
 
 function onkeydown(e) {
-    if (e.code === "Space") {
-        if (gameState === "start") {
-            hideStartScreen();
-            gameState = "playing";
-        } else if (gameState === "gameOver") {
-            resetGame();
-        }
-    } else if (gameState === "playing") {
-        changeDirection(e);
+  if (e.code === "Space") {
+    if (gameState === "start") {
+      hideStartScreen();
+      gameState = "playing";
+    } else if (gameState === "gameOver") {
+      resetGame();
     }
+  } else if (gameState === "playing") {
+    changeDirection(e);
+  }
 }
-
-
 
 function changeDirection(e) {
   if ((e.code == "ArrowUp" || e.code == "KeyW") && velocityY != 1) {
@@ -138,8 +137,10 @@ function placeFood() {
 
 function resetGame() {
   hideGameOverScreen();
-  document.getElementById("highscore").textContent = highScore.toString().padStart(3, '0');
-  document.getElementById("highscore").style.visibility='visible'
+  document.getElementById("highscore").textContent = highScore
+    .toString()
+    .padStart(3, "0");
+  document.getElementById("highscore").style.visibility = "visible";
   gameState = "playing";
   snakeX = blockSize * 9;
   snakeY = blockSize * 9;
