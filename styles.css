@@ -1,6 +1,7 @@
 body {
   text-align: center;
   position: relative;
+  background-color: #1f1f1f;
 }
 
 .huh {
@@ -76,6 +77,7 @@ canvas {
   font-family: "rainyhearts", Courier, monospace;
   font-weight: bold;
   font-size: 3rem;
+  color: #6e6e6e;
 }
 
 #highscore {
