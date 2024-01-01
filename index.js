@@ -97,7 +97,7 @@ function update() {
       }
     }
     
-    document.getElementById("score").textContent = "Score: " + score;
+    document.getElementById("score").textContent = score.toString().padStart(3, '0');
   }
 }
 
@@ -139,7 +139,7 @@ function placeFood() {
 
 function resetGame() {
   hideGameOverScreen();
-  document.getElementById("highscore").textContent = "Highscore: " + highScore;
+  document.getElementById("highscore").textContent = highScore.toString().padStart(3, '0');
   document.getElementById("highscore").style.visibility='visible'
   gameState = "playing";
   snakeX = blockSize * 5;

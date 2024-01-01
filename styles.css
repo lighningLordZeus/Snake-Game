@@ -71,3 +71,21 @@ canvas {
     left: 50%;
     top: -3.6em;
 }
+
+#score, #highscore {
+  font-family: "rainyhearts", Courier, monospace;
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+#highscore {
+  color: #652323;
+}
+
+.snake-logo {
+  width: 270px;
+}
+
+.startScreen {
+  margin: 0;
+}
